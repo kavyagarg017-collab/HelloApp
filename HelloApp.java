@@ -1,22 +1,19 @@
-public class HelloApp {
-
+public class HelloArgs {
     public static void main(String[] args) {
+        String result = "Hello ";
 
-        if (args.length == 0) {
-			
-            System.out.println("Hello, World!");
-        } else {
-            StringBuilder nameBuilder = new StringBuilder();
-            boolean first = true;
-            for (String name : args) {
-                if (!first) {
-                    nameBuilder.append(", ");
-                }
-                nameBuilder.append(name);
-                first = false;
-            }
-
-            System.out.println("Hello, " + nameBuilder.toString() + "!");
+        // Loop through command-line arguments
+        for (int i = 0; i < args.length; i++) {
+            result += args[i];
+            result += ", ";  // delimiter
         }
+
+        // Remove trailing ", " using substring
+        if (args.length > 0) {
+            result = result.substring(0, result.length() - 2);
+        }
+
+        // Print result
+        System.out.println(result);
     }
 }
